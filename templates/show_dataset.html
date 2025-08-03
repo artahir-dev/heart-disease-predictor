@@ -1,0 +1,50 @@
+<style>
+    .main {
+        display: block !important;
+    }
+    td {
+        border: 1px solid black !important;
+    }
+</style>
+
+{% extends 'template.html' %}
+
+{% block main %}
+ 
+<div class="table-responsive">
+<table class="table table-striped table-bordered">
+    {% for row in data %}
+        {% if loop.index == 1 %}
+            <tr>
+                {% for item in row %}
+                    <th class="table-dark"> {{item}} </th>                    
+                {% endfor %}
+            </tr>
+        {% else %}
+            <tr>
+                {% for item in row %}
+
+                    <td class="table-secondary"> {{item}} </td>                    
+
+                {% endfor %}
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    let table = document.querySelector(".table")
+    for (row of table.rows) {
+        for (cell of row.cells) {
+            if (cell.innerText == "nan") {
+                cell.innerHTML = ""
+            }
+        }
+    }
+</script>
+{% endblock %}

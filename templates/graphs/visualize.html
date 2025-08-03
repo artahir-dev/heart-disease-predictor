@@ -1,0 +1,14 @@
+<style>
+    .main > * {
+        margin-bottom: 60px;
+    }
+</style>
+{% extends 'template.html' %}
+
+{% block main %}
+
+{% for i in range(1,5) %}
+    {% include "/graphs/g" ~ i ~ ".html" %}
+{% endfor %}
+    
+{% endblock %}
